@@ -127,7 +127,7 @@ async def group_moderator(message: Message):
         await message.answer_location(LATITUDE, LONGITUDE)
         await message.answer(
         "📍 Bizning manzil:\n"
-        "Toshkent viloyati, Chirchiq tumani\n"
+        "Toshkent viloyati, Chirchiq shahri\n"
         "🕘 Ish vaqti: 09:00 – 21:00\n"
         "📞 Aloqa: +998 91 777 44 43\n"
         "Sizni do'konimizda kutamiz"
