@@ -53,7 +53,7 @@ welcome_keyboard = InlineKeyboardMarkup(inline_keyboard=[
     )],
     [InlineKeyboardButton(
         text="📍 Locatsiya",
-        callback_data="send_location"
+        url="https://t.me/arzonguruchchirchiq/16"
     )]
 ])
 
@@ -123,13 +123,21 @@ async def group_moderator(message: Message):
         return
 
     # 4️⃣ Locatsiya yozib yuborilganda
-    if text == "locatsiya":
+    if text == "locatsiya" or text=="Locatsiya" or text=="manzil" or text=="Адрес" or text=="лакатса":
         await message.answer_location(LATITUDE, LONGITUDE)
+        await message.answer(
+        "📍 Bizning manzil:\n"
+        "Toshkent viloyati, Chirchiq tumani\n"
+        "🕘 Ish vaqti: 09:00 – 21:00\n"
+        "📞 Aloqa: +998 91 777 44 43\n"
+        "Sizni do'konimizda kutamiz"
+    )
+    return
 
-@dp.callback_query(F.data == "send_location")
-async def send_location_callback(call: CallbackQuery):
-    await call.message.answer_location(LATITUDE, LONGITUDE)
-    await call.answer()
+# @dp.callback_query(F.data == "send_location")
+# async def send_location_callback(call: CallbackQuery):
+#     await call.message.answer_location(LATITUDE, LONGITUDE)
+#     await call.answer()
 
 
 
