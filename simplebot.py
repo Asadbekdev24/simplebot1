@@ -75,13 +75,15 @@ dp = Dispatcher()
 
 
 # ====== HANDLER ======
-@dp.message()
-async def get_photo_id(message: Message):
-    if message.photo:
-        await message.answer(
-            f"photo_id:\n<code>{message.photo[-1].file_id}</code>",
-            parse_mode="HTML"
-        )
+
+# photo_id ni aniqlash uchun kod
+# @dp.message()
+# async def get_photo_id(message: Message):
+#     if message.photo:
+#         await message.answer(
+#             f"photo_id:\n<code>{message.photo[-1].file_id}</code>",
+#             parse_mode="HTML"
+#         )
 
 
 
@@ -142,6 +144,13 @@ async def group_moderator(message: Message):
         "📞 Aloqa: +998 91 777 44 43\n"
         "Sizni do'konimizda kutamiz"
     )
+        PHOTO_ID = "AgACAgIAAyEFAASTZ0bCAAMlaWux39w8P6S_boSPyqygDEVCxV8AAtgMaxt6illLuMHCIBed8bMBAAMCAAN5AAM4BA"
+
+        await message.answer_photo(
+         photo=PHOTO_ID,
+         caption="📸 Bizning do'kon"
+)
+
     # photo = FSInputFile("photo.jpg")  # rasm bot papkasida bo‘lishi kerak
     # await message.answer_photo(
     #     photo=photo,
