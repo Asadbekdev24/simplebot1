@@ -135,21 +135,25 @@ async def group_moderator(message: Message):
         return
 
     # 4️⃣ Locatsiya yozib yuborilganda
-    if text == "locatsiya" or text=="Locatsiya" or text=="manzil" or text=="Адрес" or text=="лакатса":
+    if text == "locatsiya" or text=="Locatsiya" or text=="manzil" or text=="Адрес" or text=="лакатса" or text=="Manzil":
         await message.answer_location(LATITUDE, LONGITUDE)
-        await message.answer(
-        "📍 Bizning manzil:\n"
-        "Toshkent viloyati, Chirchiq shahri\n"
-        "🕘 Ish vaqti: 09:00 – 21:00\n"
-        "📞 Aloqa: +998 91 777 44 43\n"
-        "Sizni do'konimizda kutamiz"
-    )
+    #     await message.answer(
+    #     "📍 Bizning manzil:\n"
+    #     "Toshkent viloyati, Chirchiq shahri\n"
+    #     "🕘 Ish vaqti: 09:00 – 21:00\n"
+    #     "📞 Aloqa: +998 91 777 44 43\n"
+    #     "Sizni do'konimizda kutamiz"
+    # )
         PHOTO_ID = "AgACAgIAAyEFAASTZ0bCAAMlaWux39w8P6S_boSPyqygDEVCxV8AAtgMaxt6illLuMHCIBed8bMBAAMCAAN5AAM4BA"
 
         await message.answer_photo(
          photo=PHOTO_ID,
-         caption="📸 Bizning do'kon"
-)
+         caption="📸 Bizning do'kon rasmi\n"
+        "📍 Bizning manzil:\n"
+        "Toshkent viloyati, Chirchiq shahri\n"
+        "🕘 Ish vaqti: 09:00 – 21:00\n"
+        "📞 Aloqa: +998 91 777 44 43\n"
+        "Sizni do'konimizda kutamiz!" )
 
     # photo = FSInputFile("photo.jpg")  # rasm bot papkasida bo‘lishi kerak
     # await message.answer_photo(
