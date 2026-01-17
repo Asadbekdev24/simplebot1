@@ -76,6 +76,16 @@ dp = Dispatcher()
 
 # ====== HANDLER ======
 @dp.message()
+async def get_photo_id(message: Message):
+    if message.photo:
+        await message.answer(
+            f"photo_id:\n<code>{message.photo[-1].file_id}</code>",
+            parse_mode="HTML"
+        )
+
+
+
+@dp.message()
 async def group_moderator(message: Message):
     if message.chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
         return
@@ -132,7 +142,12 @@ async def group_moderator(message: Message):
         "📞 Aloqa: +998 91 777 44 43\n"
         "Sizni do'konimizda kutamiz"
     )
-    return
+    # photo = FSInputFile("photo.jpg")  # rasm bot papkasida bo‘lishi kerak
+    # await message.answer_photo(
+    #     photo=photo,
+    #     caption="📸 Bizning ofis"
+    # )
+    # return
 
 # @dp.callback_query(F.data == "send_location")
 # async def send_location_callback(call: CallbackQuery):
