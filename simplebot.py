@@ -84,6 +84,22 @@ async def left_handler(message: Message):
 
     await message.delete()
 
+
+UNALLOWED_WORDS={
+    "aksiya", "ehson", "hujjat", "daromad",
+}
+
+@dp.message(F.text_in_(UNALLOWED_WORDS))
+async def delete_ads(message:Message):
+    if message.chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
+        return
+    member = await bot.get_chat_member(message.chat.id, message.from_user.id)
+    if member.status in ("administrator", "creator"):
+        return
+
+    await message.delete()
+
+
 @dp.message(F.text.contains("https://"))
 async def delete_links(message: Message):
     if message.chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
@@ -95,13 +111,15 @@ async def delete_links(message: Message):
 
     await message.delete()
 
+
+
 LOCATION_WORDS = {
     "locatsiya", "manzil", "адрес", "лакатса"
 }
 
 PHOTO_ID = "AgACAgIAAyEFAASTZ0bCAAMlaWux39w8P6S_boSPyqygDEVCxV8AAtgMaxt6illLuMHCIBed8bMBAAMCAAN5AAM4BA"
 
-@dp.message(F.text)
+@dp.message(F.text_in_(LOCATION_WORDS))
 async def location_handler(message: Message):
     if message.chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
         return
