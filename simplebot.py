@@ -15,6 +15,10 @@ from aiogram.enums import ChatType
 # ====== CONFIG ======
 TOKEN = os.getenv("BOT_TOKEN")
 
+
+
+#TOKEN="8301952345:AAGSohy8NxNfiTuhu75kYzG7iR01Qep0dZg" beta test uchun api @yordamchi_beta_bot
+
 # Lokatsiya (o'zgartirishingiz mumkin)
 LATITUDE = 41.453528
 LONGITUDE = 69.566314
@@ -124,5 +128,9 @@ async def location_handler(message: Message):
         )
     )
 
+# ====== START ======
+async def main():
+    await dp.start_polling(bot, allowed_updates=["message", "chat_member"])
 
-
+if __name__ == "__main__":
+    asyncio.run(main())

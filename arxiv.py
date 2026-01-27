@@ -91,12 +91,6 @@
 #         "📞 Aloqa: +998 91 777 44 43\n"
 #         "Sizni do'konimizda kutamiz!" )
 
-# ====== START ======
-async def main():
-    await dp.start_polling(bot, allowed_updates=["message", "chat_member"])
-
-if __name__ == "__main__":
-    asyncio.run(main())
 
 
 
