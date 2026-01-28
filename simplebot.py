@@ -17,7 +17,9 @@ TOKEN = os.getenv("BOT_TOKEN")
 
 
 
-#TOKEN="8301952345:AAGSohy8NxNfiTuhu75kYzG7iR01Qep0dZg" beta test uchun api @yordamchi_beta_bot
+#TOKEN="8301952345:AAGSohy8NxNfiTuhu75kYzG7iR01Qep0dZg"
+
+#beta test uchun api @yordamchi_beta_bot
 
 # Lokatsiya (o'zgartirishingiz mumkin)
 LATITUDE = 41.453528
@@ -89,7 +91,7 @@ UNALLOWED_WORDS={
     "aksiya", "ehson", "hujjat", "daromad",
 }
 
-@dp.message(F.text_in_(UNALLOWED_WORDS))
+@dp.message(F.text.lower().strip().in_(UNALLOWED_WORDS))
 async def delete_ads(message:Message):
     if message.chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
         return
@@ -114,12 +116,12 @@ async def delete_links(message: Message):
 
 
 LOCATION_WORDS = {
-    "locatsiya", "manzil", "адрес", "лакатса"
+    "locatsiya", "manzil", "адрес", "лакатса", "adres"
 }
 
 PHOTO_ID = "AgACAgIAAyEFAASTZ0bCAAMlaWux39w8P6S_boSPyqygDEVCxV8AAtgMaxt6illLuMHCIBed8bMBAAMCAAN5AAM4BA"
 
-@dp.message(F.text_in_(LOCATION_WORDS))
+@dp.message(F.text.lower().strip().in_(LOCATION_WORDS))
 async def location_handler(message: Message):
     if message.chat.type not in (ChatType.GROUP, ChatType.SUPERGROUP):
         return
